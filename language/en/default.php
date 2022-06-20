@@ -78,6 +78,60 @@ return [
     'activity_reservation_created_title' => 'New reservation.',
     'activity_reservation_created' => '<b>:properties.full_name</b> created a reservation.',
 
+    'dining_areas' => [
+        'text_title' => 'Dining Areas',
+        'text_form_name' => 'Dining Area',
+        'text_filter_search' => 'Search by name.',
+        'text_empty' => 'There are no dining areas available.',
+        'text_tab_tables' => 'Tables',
+        'text_tab_table_combos' => 'Combos',
+        'text_add_dining_area' => 'Dining Area',
+        'text_dining_section' => 'Section',
+
+        'button_apply_dining_section' => '<i class="fa fa-long-arrow-down"></i> Apply on selected tables',
+        'button_new_combo' => 'New combo',
+
+        'column_tables' => 'Tables',
+
+        'label_dining_areas' => 'Dining Areas',
+        'label_dining_sections' => 'Sections',
+        'label_tables' => 'Tables',
+        'label_table_combos' => 'Table Combinations',
+        'label_dining_table_combos' => 'Select table(s) to combine together',
+
+        'help_dining_areas' => '',
+        'help_dining_sections' => 'Select a section to group the selected tables under',
+
+        'alert_tables_not_checked' => 'Please select at least one table.',
+        'alert_section_not_found' => 'Section not found.',
+    ],
+
+    'dining_tables' => [
+        'text_title' => 'Tables',
+        'text_form_name' => 'Table',
+        'text_empty' => 'There are no tables available.',
+        'text_filter_search' => 'Search by name or capacity.',
+
+        'column_min_capacity' => 'Minimum Capacity',
+        'column_capacity' => 'Maximum Capacity',
+        'column_extra_capacity' => 'Extra Capacity',
+        'column_section' => 'Section',
+        'column_priority' => 'Priority',
+
+        'label_min_capacity' => 'Minimum Capacity',
+        'label_capacity' => 'Maximum Capacity',
+        'label_extra_capacity' => 'Extra Capacity',
+        'label_priority' => 'Priority',
+        'label_is_enabled' => 'Reservable',
+
+        'help_tables' => 'Select a table to attach to this location.',
+        'help_extra_capacity' => 'Extra capacity is used internally by the staff to determine table convenience/inconvenience.',
+
+        'error_capacity' => 'The Maximum capacity value must be greater than minimum capacity value.',
+        'error_table_widget_data_not_specified' => 'The Table widget data source is not specified in the configuration.',
+        'error_table_widget_data_class_not_found' => 'The Table widget data source class "%s" could not be found.',
+    ],
+
     'reservations' => [
         'component_title' => 'Account Reservations Component',
         'component_desc' => 'Displays and manages account reservations',
