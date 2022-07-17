@@ -37,12 +37,17 @@ class DiningArea extends \Igniter\Flame\Database\Model
         return static::dropdown('name');
     }
 
+    protected function getScopeAttributes()
+    {
+        return ['dining_area_id', 'dining_section_id'];
+    }
+
     //
     // Accessors & Mutators
     //
 
-    public function getCustomerCountAttribute($value)
+    public function getDiningTableCountAttribute($value)
     {
-        return $this->dining_tables()->count();
+        return $this->dining_tables->count();
     }
 }

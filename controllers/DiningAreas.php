@@ -18,7 +18,7 @@ class DiningAreas extends \Admin\Classes\AdminController
 
     public $listConfig = [
         'list' => [
-            'model' => 'Igniter\Reservation\Models\DiningArea',
+            'model' => \Igniter\Reservation\Models\DiningArea::class,
             'title' => 'lang:igniter.reservation::default.dining_areas.text_title',
             'emptyMessage' => 'lang:igniter.reservation::default.dining_areas.text_empty',
             'defaultSort' => ['updated_at', 'DESC'],
@@ -28,8 +28,8 @@ class DiningAreas extends \Admin\Classes\AdminController
 
     public $formConfig = [
         'name' => 'lang:igniter.reservation::default.dining_areas.text_form_name',
-        'model' => 'Igniter\Reservation\Models\DiningArea',
-        'request' => 'Igniter\Reservation\Requests\DiningArea',
+        'model' => \Igniter\Reservation\Models\DiningArea::class,
+        'request' => \Igniter\Reservation\Requests\DiningArea::class,
         'create' => [
             'title' => 'lang:admin::lang.form.create_title',
             'redirect' => 'igniter/reservation/dining_areas/edit/{id}',

@@ -40,7 +40,7 @@ return [
                 'searchable' => true,
                 'locationAware' => true,
             ],
-            'dining_tables_count' => [
+            'dining_table_count' => [
                 'label' => 'lang:igniter.reservation::default.dining_areas.column_tables',
                 'type' => 'number',
                 'sortable' => false,

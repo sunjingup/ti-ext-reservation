@@ -2,6 +2,7 @@
 
 namespace Igniter\Reservation\Database\Migrations;
 
+use Igniter\Reservation\Models\DiningTable;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,8 @@ class CreateDiningAreasSectionsTablesAddColumnsTable extends Migration
             $table->string('color')->nullable();
             $table->timestamps();
         });
+
+        DiningTable::fixTree();
     }
 
     public function down()
