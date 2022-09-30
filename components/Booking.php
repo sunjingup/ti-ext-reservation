@@ -239,15 +239,13 @@ class Booking extends BaseComponent
         return $result;
     }
 
-    public function getTimeSlots()
+    public function getTimeSlots($guestSize = null)
     {
         $result = [];
         $selectedDate = $this->getSelectedDate();
         $selectedTime = $this->getSelectedDateTime();
         $autoAllocateTable = (bool)$this->location->getOption('auto_allocate_table', 1);
-        $guestSize = input('guest', $this->property('minGuestSize'));
 
-        $index = 0;
         $dateTimes = $this->manager->makeTimeSlots($selectedDate);
         foreach ($dateTimes as $dateTime) {
             $selectedDateTime = $selectedDate->copy()->setTimeFromTimeString($dateTime->format('H:i'));
@@ -265,7 +263,9 @@ class Booking extends BaseComponent
 
     public function getReducedTimeSlots()
     {
-        $timeslots = $this->getTimeslots()->filter(function ($slot) {
+        $guestSize = input('guest', $this->property('minGuestSize'));
+
+        $timeslots = $this->getTimeslots($guestSize)->filter(function ($slot) {
             return !$slot->fullyBooked;
         })->values();
 

@@ -25,4 +25,5 @@ security vulnerabilities.
 
 ### License
 
-TastyIgniter Reservation extension is open-sourced software licensed under the [MIT license](LICENSE).
+TastyIgniter Reservation extension is open-sourced software licensed under
+the [MIT license](https://github.com/tastyigniter/ti-ext-reservation/LICENSE.md).

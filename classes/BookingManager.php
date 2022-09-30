@@ -47,8 +47,8 @@ class BookingManager
     {
         $reservation = Reservations_model::make($this->getRequiredAttributes());
 
-        $reservation->customer = $this->customer;
-        $reservation->location = $this->location;
+        $reservation->customer()->associate($this->customer);
+        $reservation->location()->associate($this->location);
 
         return $reservation;
     }
@@ -104,9 +104,6 @@ class BookingManager
     {
         Event::fire('igniter.reservation.beforeSaveReservation', [$reservation, $data]);
 
-        $reservation->customer_id = $this->customer ? $this->customer->getKey() : null;
-        $reservation->location_id = $this->location ? $this->location->getKey() : null;
-
         $reservation->guest_num = (int)array_get($data, 'guest', 1);
         $reservation->first_name = array_get($data, 'first_name', $reservation->first_name);
         $reservation->last_name = array_get($data, 'last_name', $reservation->last_name);
@@ -145,7 +142,7 @@ class BookingManager
         return $this->location->newWorkingSchedule('opening', $days);
     }
 
-    public function isFullyBookedOn(\DateTime $dateTime, $noOfGuests)
+    public function isFullyBookedOn(\DateTime $dateTime, $noOfGuests = null)
     {
         $index = $dateTime->timestamp.'-'.$noOfGuests;
 

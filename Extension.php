@@ -2,11 +2,9 @@
 
 namespace Igniter\Reservation;
 
-use Admin\Models\Locations_model;
 use Admin\Models\Reservations_model;
 use Admin\Models\Status_history_model;
 use Admin\Requests\Location;
-use Igniter\Reservation\Actions\ManagesDiningAreas;
 use Igniter\Reservation\Listeners\MaxGuestSizePerTimeslotReached;
 use Illuminate\Support\Facades\Event;
 
@@ -16,7 +14,6 @@ class Extension extends \System\Classes\BaseExtension
     {
         $this->bindReservationEvent();
         $this->extendLocationOptionsFields();
-        $this->implementManagesDiningArea();
     }
 
     public function registerComponents()
@@ -47,43 +44,6 @@ class Extension extends \System\Classes\BaseExtension
     {
         return [
             ActivityTypes\ReservationCreated::class => 'reservationCreated',
-        ];
-    }
-
-    public function registerNavigation()
-    {
-        return [
-            'restaurant' => [
-                'child' => [
-                    'dining_areas' => [
-                        'priority' => 50,
-                        'class' => 'dining_areas',
-                        'href' => admin_url('igniter/reservation/dining_areas'),
-                        'title' => lang('igniter.reservation::default.dining_areas.text_title'),
-                        'permission' => 'Igniter.Reservation.DiningAreas',
-                    ],
-                ],
-            ],
-        ];
-    }
-
-    public function registerFormWidgets()
-    {
-        return [
-            \Igniter\Reservation\FormWidgets\DiningArea::class => [
-                'label' => 'Dining Area',
-                'code' => 'diningarea',
-            ],
-        ];
-    }
-
-    public function registerPermissions()
-    {
-        return [
-            'Igniter.Reservation.DiningAreas' => [
-                'description' => 'Create, modify and delete reservation dining areas',
-                'group' => 'module',
-            ],
         ];
     }
 
@@ -279,13 +239,6 @@ class Extension extends \System\Classes\BaseExtension
                 'options.max_reservation_advance_time' => ['integer', 'min:0', 'max:999'],
                 'options.reservation_cancellation_timeout' => ['integer', 'min:0', 'max:999'],
             ]);
-        });
-    }
-
-    protected function implementManagesDiningArea()
-    {
-        Locations_model::extend(function ($model) {
-            $model->implement[] = ManagesDiningAreas::class;
         });
     }
 }
